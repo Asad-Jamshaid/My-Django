@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block template %}
+
+    <section id="welcome">
+        <div class="container">
+            <h3>You are at Our Home Page. <h3>
+            <h1>Welcome to Cloudpacer - Your Trusted IT Service Company</h1>
+            <p>We provide cutting-edge solutions for your digital needs.</p>
+            
+            <table class = "container">
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Can Vote?</th>
+                </tr>
+                {% for person in peoples %}
+                <tr>
+                    <td>{{ forloop.counter }}
+                        {{text|truncatechars:10}}
+                    </td>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td {% if person.age < 18 %} style = "background:red" {% endif %}>
+                        {% if person.age >= 18 %}
+                            👍
+                        {% else %}
+                            👎
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Web Development</li>
+                <li>App Development</li>
+                <li>Dev Ops</li>
+                <li>Data Science & AI</li>
+            </ul>
+        </div>
+    </section>
+
+    <p>
+        {% if "Grape" in fruits %}
+            Yes Available
+        {% else %}
+            Not Available
+        {% endif %}
+    </p>
+
+    <a href = "/about-us/" >
+        About Us
+    </a>
+
+    _|_
+
+    <a href = "/contact/" >
+        Contact
+    </a>    
+    
+{% endblock %}
