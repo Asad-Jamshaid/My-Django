@@ -3,9 +3,9 @@ fake = Faker()
 import random
 from .models import *
 
-def seed_db(n = 10) -> None:
+def seed_db(n = 10):
     try:
-        for _ in range(n):
+        for _ in range(n) -> None:
             departments_obj = Department.objects.all() 
             random_index = random.randint(0, len(departments_obj)-1) 
             department = department_obj[random_index] 
