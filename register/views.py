@@ -4,6 +4,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.core.paginator import Paginator
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 def register_page(request):
     if request.method == 'POST':
