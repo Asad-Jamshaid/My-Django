@@ -13,12 +13,10 @@ def register_page(request):
         email = data.get('email')
         password = data.get('password')
         
-        # Check if the email is already in use
         if User.objects.filter(username=email).exists():
             messages.error(request, 'Email is already taken')
             return redirect('/register/')
         
-        # Create a new User object and set the password
         user = User.objects.create_user(
             username=email,
             first_name=first_name,
@@ -27,10 +25,8 @@ def register_page(request):
             password=password
         )
         
-        # Save the user
         user.save()
         
-        # Create the Registration object
         registration = Registration(
             user=user,
             first_name=first_name,
